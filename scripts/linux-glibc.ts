@@ -5,7 +5,8 @@ import * as NodePath from "node:path";
 import * as NodeUtil from "node:util";
 
 // Both Linux release jobs build on Ubuntu 24.04; this is a build ceiling, not a distro support promise.
-const GLIBC_BUILD_CEILING = "2.39";
+// Local installs (scripts/install-tc.sh) set it to the host's glibc: they run only on that machine.
+const GLIBC_BUILD_CEILING = process.env.T3CODE_LINUX_GLIBC_CEILING || "2.39";
 const readelf = NodeUtil.promisify(NodeChildProcess.execFile);
 
 function compareVersions(left: string, right: string): number {
