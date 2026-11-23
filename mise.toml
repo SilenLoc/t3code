@@ -1,0 +1,13 @@
+# Toolchain for building T3 Code from this checkout. Run `mise trust` once, then
+# `mise run install` builds the desktop app and installs it as `t2`.
+# Versions match package.json (engines.node, packageManager) and pnpm-workspace.yaml (vite-plus).
+
+[tools]
+node = "26.13.1"
+pnpm = "12.14.0"
+rust = "stable"
+"npm:vite-plus" = "1.4.0"
+
+[tasks.install]
+description = "Build the desktop app and install it as t2 (binary, launcher entry, icon)"
+run = "scripts/install-t2.sh"
